@@ -2,10 +2,8 @@ package view;
 
 import model.SmartDevice;
 import java.util.List;
-import java.util.Scanner;
 
 public class DeviceView {
-    private final Scanner scanner = new Scanner(System.in);
 
     public void showMainMenu() {
         System.out.println("\n=== MENU UTAMA SMART HOME ===");
@@ -35,32 +33,5 @@ public class DeviceView {
 
     public void showMessage(String message) {
         System.out.println(message);
-    }
-
-    public String readString(String prompt) {
-        System.out.print(prompt);
-        return scanner.nextLine();
-    }
-
-    public int readInt(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                return Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Input harus berupa angka bulat!");
-            }
-        }
-    }
-
-    public double readDouble(String prompt) {
-        while (true) {
-            try {
-                System.out.print(prompt);
-                return Double.parseDouble(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Input harus berupa angka desimal!");
-            }
-        }
     }
 }

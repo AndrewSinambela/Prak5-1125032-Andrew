@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import view.DeviceView;
+import view.InputUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class DeviceController {
 
         while (running) {
             view.showMainMenu();
-            int pilihan = view.readInt("Pilih menu: ");
+            int pilihan = InputUtil.readInt("Pilih menu: ");
 
             switch (pilihan) {
                 case 1:
@@ -40,7 +41,7 @@ public class DeviceController {
 
     private void tambahPerangkatFlow() {
         view.showSubMenu();
-        int subPilihan = view.readInt("Pilih tipe perangkat: ");
+        int subPilihan = InputUtil.readInt("Pilih tipe perangkat: ");
 
         switch (subPilihan) {
             case 1:
@@ -58,18 +59,18 @@ public class DeviceController {
     }
 
     private void tambahSmartTV() {
-        String id = view.readString("Masukkan ID: ");
-        String nama = view.readString("Masukkan Nama: ");
-        double daya = view.readDouble("Masukkan Daya (W): ");
-        int channel = view.readInt("Masukkan Channel: ");
-        int volume = view.readInt("Masukkan Volume: ");
+        String id = InputUtil.readString("Masukkan ID: ");
+        String nama = InputUtil.readString("Masukkan Nama: ");
+        double daya = InputUtil.readDouble("Masukkan Daya (W): ");
+        int channel = InputUtil.readInt("Masukkan Channel: ");
+        int volume = InputUtil.readInt("Masukkan Volume: ");
 
-        String connInput = view.readString("Pilih Koneksi (WIFI/BLUETOOTH): ");
+        String connInput = InputUtil.readString("Pilih Koneksi (WIFI/BLUETOOTH): ");
         KONEKSI koneksi = connInput.equalsIgnoreCase("BLUETOOTH") ? KONEKSI.BLUETOOTH : KONEKSI.WIFI;
 
         SmartTV tv = new SmartTV(id, nama, daya, channel, volume, koneksi);
 
-        String st = view.readString("Nyalakan perangkat sekarang? (y/n): ");
+        String st = InputUtil.readString("Nyalakan perangkat sekarang? (y/n): ");
         if (st.equalsIgnoreCase("y")) {
             tv.turnOn();
         } else {
@@ -81,17 +82,17 @@ public class DeviceController {
     }
 
     private void tambahSmartSpeaker() {
-        String id = view.readString("Masukkan ID: ");
-        String nama = view.readString("Masukkan Nama: ");
-        double daya = view.readDouble("Masukkan Daya (W): ");
-        int volume = view.readInt("Masukkan Volume: ");
+        String id = InputUtil.readString("Masukkan ID: ");
+        String nama = InputUtil.readString("Masukkan Nama: ");
+        double daya = InputUtil.readDouble("Masukkan Daya (W): ");
+        int volume = InputUtil.readInt("Masukkan Volume: ");
 
-        String connInput = view.readString("Pilih Koneksi (WIFI/BLUETOOTH): ");
+        String connInput = InputUtil.readString("Pilih Koneksi (WIFI/BLUETOOTH): ");
         KONEKSI koneksi = connInput.equalsIgnoreCase("WIFI") ? KONEKSI.WIFI : KONEKSI.BLUETOOTH;
 
         SmartSpeaker speaker = new SmartSpeaker(id, nama, daya, volume, koneksi);
 
-        String st = view.readString("Nyalakan perangkat sekarang? (y/n): ");
+        String st = InputUtil.readString("Nyalakan perangkat sekarang? (y/n): ");
         if (st.equalsIgnoreCase("y")) {
             speaker.turnOn();
         } else {
@@ -103,14 +104,14 @@ public class DeviceController {
     }
 
     private void tambahSmartDoorLock() {
-        String id = view.readString("Masukkan ID: ");
-        String nama = view.readString("Masukkan Nama: ");
-        double daya = view.readDouble("Masukkan Daya (W): ");
-        String pin = view.readString("Masukkan PIN asli: ");
+        String id = InputUtil.readString("Masukkan ID: ");
+        String nama = InputUtil.readString("Masukkan Nama: ");
+        double daya = InputUtil.readDouble("Masukkan Daya (W): ");
+        String pin = InputUtil.readString("Masukkan PIN asli: ");
 
         SmartDoorLock lock = new SmartDoorLock(id, nama, daya, pin);
 
-        String st = view.readString("Kunci pintu sekarang? (y/n): ");
+        String st = InputUtil.readString("Kunci pintu sekarang? (y/n): ");
         if (st.equalsIgnoreCase("y")) {
             lock.lock();
         } else {
